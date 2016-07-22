@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PhotonRemoteControl</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="up">UP</string>
+    <string name="down">DOWN</string>
+    <string name="left">LEEFT</string>
+    <string name="right">RIGHT</string>
+</resources>
