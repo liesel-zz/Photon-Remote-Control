@@ -1,8 +1,13 @@
 package photonremotecontrol.cafecomjava.com.br.photonremotecontrol.service;
 
+import java.util.List;
+
 import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.Model.Particle;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -17,4 +22,11 @@ public interface ParticleService {
 
     @GET("/users/{login}")
     Observable<Particle> getUser(@Path("login") String login);
+
+    @GET("/group/{id}/users")
+    Observable<List<Particle>> groupList(@Path("id") int groupId, @Query("sort") String sort);
+
+    @POST("/users/new")
+    Observable<Particle> createUser(@Body Particle user);
+
 }

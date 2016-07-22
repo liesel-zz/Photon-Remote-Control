@@ -18,6 +18,10 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -114,6 +118,27 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.btnleft)
     public void goLeft(){
+        RxJavaCallAdapterFactory rxAdapter = RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(rxAdapter)
+                .build();
         Log.i("foi left","ahhh garoto");
+    }
+
+    @OnClick(R.id.btnRight)
+    public void goRight(){
+        Log.i("foi right","ahhh garoto");
+    }
+
+    @OnClick(R.id.btnUp)
+    public void goUp(){
+        Log.i("foi up","ahhh garoto");
+    }
+
+    @OnClick(R.id.btnDown)
+    public void goDown(){
+        Log.i("foi down","ahhh garoto");
     }
 }
