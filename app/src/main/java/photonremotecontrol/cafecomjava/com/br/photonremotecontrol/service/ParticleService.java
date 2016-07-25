@@ -20,11 +20,20 @@ import rx.Observable;
 public interface ParticleService {
 
 
-    @GET("/users/{login}")
+    @POST("/users/{login}")
     Observable<Particle> getUser(@Path("login") String login);
 
-    @GET("/group/{id}/users")
-    Observable<List<Particle>> groupList(@Path("id") int groupId, @Query("sort") String sort);
+    @POST("/{id}/left?access_token={token}")
+    Observable<Particle> goLeft(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+
+    @POST("/{id}/right?access_token={token}")
+    Observable<Particle> goRight(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+
+    @POST("/{id}/up?access_token={token}")
+    Observable<Particle> goUp(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+
+    @POST("/{id}/down?access_token={token}")
+    Observable<Particle> goDown(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
 
     @POST("/users/new")
     Observable<Particle> createUser(@Body Particle user);
