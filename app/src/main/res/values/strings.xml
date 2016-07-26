@@ -9,4 +9,6 @@
     <string name="down">DOWN</string>
     <string name="left">LEEFT</string>
     <string name="right">RIGHT</string>
+    <string name="device">ss</string>
+    <string name="token">ss</string>
 </resources>

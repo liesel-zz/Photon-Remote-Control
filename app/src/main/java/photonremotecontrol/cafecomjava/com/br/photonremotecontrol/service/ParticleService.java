@@ -4,6 +4,8 @@ import java.util.List;
 
 import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.Model.Particle;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -20,22 +22,19 @@ import rx.Observable;
 public interface ParticleService {
 
 
-    @POST("/users/{login}")
-    Observable<Particle> getUser(@Path("login") String login);
+    @POST("/{id}/left")
+    Observable<Particle> goLeft(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-    @POST("/{id}/left?access_token={token}")
-    Observable<Particle> goLeft(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+    @POST("/{id}/right")
+    Observable<Particle> goRight(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-    @POST("/{id}/right?access_token={token}")
-    Observable<Particle> goRight(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+    @FormUrlEncoded
+    @POST("{id}/up")
+    Observable<Particle> goUp(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-    @POST("/{id}/up?access_token={token}")
-    Observable<Particle> goUp(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
+    @POST("/{id}/down")
+    Observable<Particle> goDown(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-    @POST("/{id}/down?access_token={token}")
-    Observable<Particle> goDown(@Path("id") String deviceId,@Path("token") String token, @Query("sort") String sort);
 
-    @POST("/users/new")
-    Observable<Particle> createUser(@Body Particle user);
 
 }
