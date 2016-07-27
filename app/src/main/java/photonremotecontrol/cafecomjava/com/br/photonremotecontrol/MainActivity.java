@@ -1,5 +1,6 @@
 package photonremotecontrol.cafecomjava.com.br.photonremotecontrol;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.btnleft) Button btnleft;
     @BindView(R.id.btnRight) Button btnRight;
     @BindView(R.id.btnUp) Button btnUp;
+    @BindString(R.string.device) String device;
+    @BindString(R.string.token) String token;
+
 
     private ParticleService apiService;
 
@@ -138,39 +143,48 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.btnleft)
     public void goLeft(){
-        Observable<Particle> call = apiService.goUp("","", "on");
+        Observable<Particle> call = apiService.move(device,token, "left");
         this.makeAcall(call);
     }
 
     @OnClick(R.id.btnRight)
     public void goRight(){
-        Log.i("foi right","ahhh garoto");
+        Observable<Particle> call = apiService.move(device,token, "right");
+        this.makeAcall(call);
     }
 
     @OnClick(R.id.btnUp)
-    public void goUp(){
-        Log.i("foi up","ahhh garoto");
+    public void goUp()
+    {
+        Observable<Particle> call = apiService.move(device,token, "up");
+        this.makeAcall(call);
     }
 
     @OnClick(R.id.btnDown)
     public void goDown(){
-        Log.i("foi down","ahhh garoto");
+        Observable<Particle> call = apiService.move(device,token, "down");
+        this.makeAcall(call);
     }
 
 
     private void makeAcall(Observable observable){
+        final ProgressDialog progress = ProgressDialog.show(this, "Wait",
+                "Sending command...", true);
         Subscription subscription = observable
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Particle>() {
                     @Override
                     public void onCompleted() {
+                        progress.dismiss();
                         Log.i("onCompleted","onCompleted");
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        progress.dismiss();
                         // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
+                        if (e instanceof HttpException){
                             HttpException response = (HttpException)e;
                             int code = response.code();
                             Log.i("onError",response.getMessage());

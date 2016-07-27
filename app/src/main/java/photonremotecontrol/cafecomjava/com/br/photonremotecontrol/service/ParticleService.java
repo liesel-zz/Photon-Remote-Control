@@ -21,19 +21,10 @@ import rx.Observable;
  */
 public interface ParticleService {
 
-
-    @POST("/{id}/left")
-    Observable<Particle> goLeft(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
-
-    @POST("/{id}/right")
-    Observable<Particle> goRight(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
-
     @FormUrlEncoded
-    @POST("{id}/up")
-    Observable<Particle> goUp(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
+    @POST("{id}/move")
+    Observable<Particle> move(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-    @POST("/{id}/down")
-    Observable<Particle> goDown(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
 
 
