@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.btnleft) Button btnleft;
     @BindView(R.id.btnRight) Button btnRight;
     @BindView(R.id.btnUp) Button btnUp;
+    @BindView(R.id.btnStop) Button btnStop;
     @BindString(R.string.device) String device;
     @BindString(R.string.token) String token;
 
@@ -165,6 +166,13 @@ public class MainActivity extends AppCompatActivity
         Observable<Particle> call = apiService.move(device,token, "down");
         this.makeAcall(call);
     }
+
+    @OnClick(R.id.btnStop)
+    public void stop(){
+        Observable<Particle> call = apiService.move(device,token, "stop");
+        this.makeAcall(call);
+    }
+
 
 
     private void makeAcall(Observable observable){

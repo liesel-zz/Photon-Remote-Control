@@ -25,7 +25,4 @@ public interface ParticleService {
     @POST("{id}/move")
     Observable<Particle> move(@Path("id") String deviceId,@Field("access_token") String token, @Field("args") String code);
 
-
-
-
 }

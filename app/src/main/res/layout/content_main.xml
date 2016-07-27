@@ -14,7 +14,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Status:"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="14dp"
+                android:height="30dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:text="Connected"
+                android:layout_height="wrap_content"
+                android:background="#0b9204"
+                android:textColor="#ffffff" />
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,5 +75,13 @@
             android:layout_height="wrap_content"
             android:text="@string/down"
             android:id="@+id/btnDown" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:id="@+id/btnStop"
+            android:background="#b20a0a"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
     </LinearLayout>
 </RelativeLayout>
