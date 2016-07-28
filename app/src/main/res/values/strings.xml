@@ -12,4 +12,9 @@
     <string name="right">RIGHT</string>
     <string name="device">ss</string>
     <string name="token">ss</string>
+    <string name="registred_devices">Registered Devices</string>
+    <string name="new_device">New Device</string>
+    <string name="device_label">Device:</string>
+    <string name="created_label">Created:</string>
+    <string name="last_online_label">Online Date:</string>
 </resources>

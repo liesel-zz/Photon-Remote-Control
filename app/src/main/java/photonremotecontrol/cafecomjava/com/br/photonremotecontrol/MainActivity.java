@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -35,11 +36,11 @@ import rx.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.btnDown) Button btnDown;
-    @BindView(R.id.btnleft) Button btnleft;
-    @BindView(R.id.btnRight) Button btnRight;
-    @BindView(R.id.btnUp) Button btnUp;
-    @BindView(R.id.btnStop) Button btnStop;
+//    @BindView(R.id.btnDown) Button btnDown;
+//    @BindView(R.id.btnleft) Button btnleft;
+//    @BindView(R.id.btnRight) Button btnRight;
+//    @BindView(R.id.btnUp) Button btnUp;
+//    @BindView(R.id.btnStop) Button btnStop;
     @BindString(R.string.device) String device;
     @BindString(R.string.token) String token;
 
@@ -55,14 +56,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -124,7 +117,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+           DevicesActivity devicesActivity = new DevicesActivity();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.mainFrameLayout,devicesActivity);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -142,36 +138,36 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @OnClick(R.id.btnleft)
-    public void goLeft(){
-        Observable<Particle> call = apiService.move(device,token, "left");
-        this.makeAcall(call);
-    }
-
-    @OnClick(R.id.btnRight)
-    public void goRight(){
-        Observable<Particle> call = apiService.move(device,token, "right");
-        this.makeAcall(call);
-    }
-
-    @OnClick(R.id.btnUp)
-    public void goUp()
-    {
-        Observable<Particle> call = apiService.move(device,token, "up");
-        this.makeAcall(call);
-    }
-
-    @OnClick(R.id.btnDown)
-    public void goDown(){
-        Observable<Particle> call = apiService.move(device,token, "down");
-        this.makeAcall(call);
-    }
-
-    @OnClick(R.id.btnStop)
-    public void stop(){
-        Observable<Particle> call = apiService.move(device,token, "stop");
-        this.makeAcall(call);
-    }
+//    @OnClick(R.id.btnleft)
+//    public void goLeft(){
+//        Observable<Particle> call = apiService.move(device,token, "left");
+//        this.makeAcall(call);
+//    }
+//
+//    @OnClick(R.id.btnRight)
+//    public void goRight(){
+//        Observable<Particle> call = apiService.move(device,token, "right");
+//        this.makeAcall(call);
+//    }
+//
+//    @OnClick(R.id.btnUp)
+//    public void goUp()
+//    {
+//        Observable<Particle> call = apiService.move(device,token, "up");
+//        this.makeAcall(call);
+//    }
+//
+//    @OnClick(R.id.btnDown)
+//    public void goDown(){
+//        Observable<Particle> call = apiService.move(device,token, "down");
+//        this.makeAcall(call);
+//    }
+//
+//    @OnClick(R.id.btnStop)
+//    public void stop(){
+//        Observable<Particle> call = apiService.move(device,token, "stop");
+//        this.makeAcall(call);
+//    }
 
 
 
