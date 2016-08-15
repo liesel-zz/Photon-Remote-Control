@@ -8,7 +8,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.Model.Device;
+import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.model.Device;
 import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.R;
 import photonremotecontrol.cafecomjava.com.br.photonremotecontrol.utils.Utils;
 

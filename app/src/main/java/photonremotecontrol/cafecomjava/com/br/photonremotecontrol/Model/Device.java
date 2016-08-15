@@ -1,4 +1,4 @@
-package photonremotecontrol.cafecomjava.com.br.photonremotecontrol.Model;
+package photonremotecontrol.cafecomjava.com.br.photonremotecontrol.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package photonremotecontrol.cafecomjava.com.br.photonremotecontrol.Model;
+package photonremotecontrol.cafecomjava.com.br.photonremotecontrol.model;
 
 /**
  * Created by joel on 7/21/16.
